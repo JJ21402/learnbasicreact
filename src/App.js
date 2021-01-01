@@ -12,7 +12,7 @@ function App() {
     {
       id: 2,
       title:'Dinner',
-      completed: false
+      completed: true
     },
     {
       id: 3,
@@ -20,10 +20,19 @@ function App() {
       completed: false
     },
   ])
-
+  const markComplete = (id) => {
+    setTodos(todos.map(todo => {
+      if(todo.id === id){
+        todo.completed = !todo.completed;
+      }
+      console.log(todo)
+    return todo;
+    }))
+  }
   return (
     <div className="App">
-      <Todos todos={todos}/>
+      <Todos todos={todos}
+      markComplete = {markComplete}/>
     </div>
   );
 }
